@@ -1,0 +1,7 @@
+
+
+class FeedModel(object):
+    ''' 
+    
+    '''
+    pass

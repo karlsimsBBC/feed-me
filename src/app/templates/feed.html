@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<div class="main_app">
+    <div class="feed">
+        {% for item in entries %}
+        <div class="item" id="{{ item.uuid }}">
+            <h3 class="item-title">{{ item.title }}</h3>
+            <span class="item-date">{{ item.published }}</span>
+            <div class="item-summary">{{ item.summary[:300] }}</div>
+            <div class="item-source">
+                <img title="{{ feeds[item.feed_title].title }}" alt="{{ feeds[item.feed_title].title }}" class="feed-img" src="{{feeds[item.feed_title].image.href}}" />
+                <span>Source: <a class="item-link" href="{{ item.link }}">{{ item.feed_title }}</a></span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script src="{{ url_for('static', filename='stopwords.js') }}"></script>
+<script src="{{ url_for('static', filename='tfidf.js') }}"></script>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+{% endblock %}
